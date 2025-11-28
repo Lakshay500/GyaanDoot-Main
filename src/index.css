@@ -1,0 +1,239 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Smooth theme transitions */
+* {
+  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+}
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222 47% 11%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+
+    --primary: 262 83% 58%;
+    --primary-foreground: 0 0% 100%;
+    
+    --primary-glow: 262 90% 70%;
+
+    --secondary: 280 100% 70%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 210 40% 96%;
+    --muted-foreground: 215 16% 47%;
+
+    --accent: 340 82% 62%;
+    --accent-foreground: 0 0% 100%;
+
+    --success: 142 71% 45%;
+    --success-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 262 83% 58%;
+
+    --radius: 0.75rem;
+
+    --gradient-hero: linear-gradient(135deg, hsl(262 83% 58%), hsl(280 100% 70%), hsl(340 82% 62%));
+    --gradient-card: linear-gradient(135deg, hsl(262 83% 58%), hsl(280 100% 70%));
+    --gradient-accent: linear-gradient(135deg, hsl(340 82% 62%), hsl(280 100% 70%));
+    --gradient-success: linear-gradient(135deg, hsl(142 71% 45%), hsl(160 84% 39%));
+    --gradient-vibrant: linear-gradient(135deg, hsl(262 83% 58%), hsl(340 82% 62%), hsl(45 93% 58%));
+    
+    --shadow-soft: 0 2px 8px rgba(0, 0, 0, 0.08);
+    --shadow-glow: 0 0 30px rgba(139, 92, 246, 0.4);
+    --shadow-colored: 0 8px 32px rgba(139, 92, 246, 0.25);
+    --shadow-accent: 0 8px 32px rgba(236, 72, 153, 0.25);
+    
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5% 26%;
+    --sidebar-primary: 221 83% 53%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 5% 96%;
+    --sidebar-accent-foreground: 240 6% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 221 83% 53%;
+  }
+
+  .dark {
+    --background: 222 47% 11%;
+    --foreground: 210 40% 98%;
+
+    --card: 222 47% 13%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222 47% 13%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 262 83% 68%;
+    --primary-foreground: 0 0% 100%;
+    
+    --primary-glow: 262 90% 80%;
+
+    --secondary: 280 100% 75%;
+    --secondary-foreground: 222 47% 11%;
+
+    --muted: 217 33% 18%;
+    --muted-foreground: 215 20% 65%;
+
+    --accent: 340 82% 67%;
+    --accent-foreground: 222 47% 11%;
+
+    --success: 142 71% 50%;
+    --success-foreground: 222 47% 11%;
+
+    --destructive: 0 63% 31%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217 33% 18%;
+    --input: 217 33% 18%;
+    --ring: 262 83% 68%;
+    
+    --gradient-hero: linear-gradient(135deg, hsl(262 83% 68%), hsl(280 100% 75%), hsl(340 82% 67%));
+    --gradient-card: linear-gradient(135deg, hsl(262 83% 68%), hsl(280 100% 75%));
+    --gradient-accent: linear-gradient(135deg, hsl(340 82% 67%), hsl(280 100% 75%));
+    --gradient-success: linear-gradient(135deg, hsl(142 71% 50%), hsl(160 84% 45%));
+    --gradient-vibrant: linear-gradient(135deg, hsl(262 83% 68%), hsl(340 82% 67%), hsl(45 93% 68%));
+    
+    --shadow-soft: 0 2px 8px rgba(0, 0, 0, 0.3);
+    --shadow-glow: 0 0 30px rgba(139, 92, 246, 0.6);
+    --shadow-colored: 0 8px 32px rgba(139, 92, 246, 0.35);
+    --shadow-accent: 0 8px 32px rgba(236, 72, 153, 0.35);
+
+    --sidebar-background: 222 47% 11%;
+    --sidebar-foreground: 240 5% 96%;
+    --sidebar-primary: 221 83% 53%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 217 33% 18%;
+    --sidebar-accent-foreground: 240 5% 96%;
+    --sidebar-border: 217 33% 18%;
+    --sidebar-ring: 221 83% 53%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+
+  a {
+    @apply transition-all duration-300;
+  }
+
+  a:not(.no-hover):hover {
+    @apply text-primary;
+  }
+  
+  /* Ripple effect */
+  .ripple {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.6);
+    transform: scale(0);
+    animation: ripple-animation 0.6s ease-out;
+    pointer-events: none;
+  }
+  
+  @keyframes ripple-animation {
+    to {
+      transform: scale(4);
+      opacity: 0;
+    }
+  }
+  
+  /* Icon animations */
+  svg {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  a:hover svg,
+  button:hover svg {
+    transform: scale(1.1) translateY(-1px);
+  }
+  
+  /* Rotate animation for specific icons */
+  .icon-rotate:hover svg {
+    transform: rotate(360deg);
+  }
+  
+  /* Bounce animation for icons */
+  .icon-bounce:hover svg {
+    animation: icon-bounce 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+  
+  @keyframes icon-bounce {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-4px);
+    }
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-background;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-primary rounded-full;
+  transition: background-color 0.2s;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-primary-glow;
+}
+
+/* NProgress custom styling */
+#nprogress {
+  pointer-events: none;
+}
+
+#nprogress .bar {
+  background: linear-gradient(90deg, hsl(262 83% 58%), hsl(280 100% 70%), hsl(340 82% 62%));
+  position: fixed;
+  z-index: 9999;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  box-shadow: 0 0 10px hsl(262 83% 58% / 0.8), 0 0 5px hsl(280 100% 70% / 0.6);
+}
+
+#nprogress .peg {
+  display: block;
+  position: absolute;
+  right: 0px;
+  width: 100px;
+  height: 100%;
+  box-shadow: 0 0 10px hsl(262 83% 58%), 0 0 5px hsl(280 100% 70%);
+  opacity: 1.0;
+  transform: rotate(3deg) translate(0px, -4px);
+}
